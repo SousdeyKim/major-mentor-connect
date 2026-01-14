@@ -1,35 +1,48 @@
-import { Shield, MessageSquare, Video, Star, Clock, BadgeCheck } from "lucide-react";
+import {
+  Shield,
+  Share2,
+  Video,
+  Star,
+  Clock,
+  BadgeCheck,
+} from "lucide-react";
 
 const features = [
   {
     icon: BadgeCheck,
     title: "Verified Mentors",
-    description: "All mentors are verified students from accredited universities studying your major of interest.",
+    description:
+      "All mentors are verified students from accredited universities studying your major of interest.",
   },
   {
     icon: Shield,
     title: "Safe & Secure",
-    description: "All communications happen within our platform. No personal contact details are shared.",
+    description:
+      "All communications happen within our platform. No personal contact details are shared.",
   },
   {
-    icon: MessageSquare,
-    title: "In-Platform Messaging",
-    description: "Chat with your mentor before sessions through our secure messaging system.",
+    icon: Share2,
+    title: "External Connection (Post-Session)",
+    description:
+      "Following session completion, mentors may optionally choose to share their social media or professional contact links with mentees for continued informal learning and networking.",
   },
   {
     icon: Video,
     title: "Video Discussions",
-    description: "Engage in face-to-face video sessions for a more personal and interactive experience.",
+    description:
+      "Engage in face-to-face video sessions for a more personal and interactive experience.",
   },
   {
     icon: Star,
     title: "Honest Reviews",
-    description: "Read authentic reviews from other students to find the perfect mentor for you.",
+    description:
+      "Read authentic reviews from other students to find the perfect mentor for you.",
   },
   {
     icon: Clock,
     title: "Flexible Scheduling",
-    description: "Book sessions at times that work for you. 90-minute sessions designed for in-depth discussions.",
+    description:
+      "Book sessions at times that work for you. 90-minute sessions designed for in-depth discussions.",
   },
 ];
 
@@ -42,7 +55,8 @@ const FeaturesSection = () => {
             Why Choose <span className="text-gradient">MajorConnect</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Everything you need to make an informed decision about your academic future.
+            Everything you need to make an informed decision about your academic
+            future.
           </p>
         </div>
 
