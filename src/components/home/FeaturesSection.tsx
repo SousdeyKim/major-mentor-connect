@@ -14,7 +14,7 @@ const features = [
   {
     icon: MessageSquare,
     title: "In-Platform Messaging",
-    description: "Chat with your mentor before and after sessions through our secure messaging system.",
+    description: "Chat with your mentor before sessions through our secure messaging system.",
   },
   {
     icon: Video,
