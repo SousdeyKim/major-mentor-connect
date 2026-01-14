@@ -3,36 +3,170 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Code, Briefcase, Stethoscope, Scale, Palette, Calculator, BookOpen, Music, FlaskConical, Building2, Leaf, Globe, Camera, Cpu, Heart } from "lucide-react";
+import {
+  Search,
+  Code,
+  Briefcase,
+  Stethoscope,
+  Scale,
+  Palette,
+  Calculator,
+  BookOpen,
+  Music,
+  FlaskConical,
+  Building2,
+  Leaf,
+  Globe,
+  Camera,
+  Cpu,
+  Heart,
+} from "lucide-react";
 
 const allMajors = [
-  { id: "computer-science", icon: Code, name: "Computer Science", category: "Technology", mentors: 45, description: "Software development, AI, and technology innovation" },
-  { id: "business-administration", icon: Briefcase, name: "Business Administration", category: "Business", mentors: 38, description: "Management, entrepreneurship, and business strategy" },
-  { id: "medicine", icon: Stethoscope, name: "Medicine", category: "Health Sciences", mentors: 28, description: "Healthcare, medical practice, and patient care" },
-  { id: "law", icon: Scale, name: "Law", category: "Social Sciences", mentors: 22, description: "Legal studies, advocacy, and justice system" },
-  { id: "design", icon: Palette, name: "Design", category: "Arts", mentors: 31, description: "Visual arts, UX/UI, and creative direction" },
-  { id: "engineering", icon: Calculator, name: "Engineering", category: "Engineering", mentors: 35, description: "Civil, mechanical, and electrical engineering" },
-  { id: "education", icon: BookOpen, name: "Education", category: "Education", mentors: 19, description: "Teaching, curriculum development, and pedagogy" },
-  { id: "music", icon: Music, name: "Music", category: "Arts", mentors: 14, description: "Performance, composition, and music theory" },
-  { id: "chemistry", icon: FlaskConical, name: "Chemistry", category: "Sciences", mentors: 16, description: "Chemical research, pharmaceuticals, and materials" },
-  { id: "architecture", icon: Building2, name: "Architecture", category: "Engineering", mentors: 18, description: "Building design, urban planning, and sustainability" },
-  { id: "environmental-science", icon: Leaf, name: "Environmental Science", category: "Sciences", mentors: 12, description: "Climate, conservation, and environmental policy" },
-  { id: "international-relations", icon: Globe, name: "International Relations", category: "Social Sciences", mentors: 15, description: "Diplomacy, global politics, and foreign affairs" },
-  { id: "film-media", icon: Camera, name: "Film & Media", category: "Arts", mentors: 11, description: "Filmmaking, broadcasting, and digital media" },
-  { id: "data-science", icon: Cpu, name: "Data Science", category: "Technology", mentors: 27, description: "Analytics, machine learning, and big data" },
-  { id: "psychology", icon: Heart, name: "Psychology", category: "Health Sciences", mentors: 24, description: "Mental health, behavior, and cognitive science" },
+  {
+    id: "computer-science",
+    icon: Code,
+    name: "Computer Science",
+    category: "Technology",
+    mentors: 3,
+    description: "Software development, AI, and technology innovation",
+  },
+  {
+    id: "business-administration",
+    icon: Briefcase,
+    name: "Business Administration",
+    category: "Business",
+    mentors: 0,
+    description: "Management, entrepreneurship, and business strategy",
+  },
+  {
+    id: "medicine",
+    icon: Stethoscope,
+    name: "Medicine",
+    category: "Health Sciences",
+    mentors: 0,
+    description: "Healthcare, medical practice, and patient care",
+  },
+  {
+    id: "law",
+    icon: Scale,
+    name: "Law",
+    category: "Social Sciences",
+    mentors: 0,
+    description: "Legal studies, advocacy, and justice system",
+  },
+  {
+    id: "design",
+    icon: Palette,
+    name: "Design",
+    category: "Arts",
+    mentors: 0,
+    description: "Visual arts, UX/UI, and creative direction",
+  },
+  {
+    id: "engineering",
+    icon: Calculator,
+    name: "Engineering",
+    category: "Engineering",
+    mentors: 0,
+    description: "Civil, mechanical, and electrical engineering",
+  },
+  {
+    id: "education",
+    icon: BookOpen,
+    name: "Education",
+    category: "Education",
+    mentors: 0,
+    description: "Teaching, curriculum development, and pedagogy",
+  },
+  {
+    id: "music",
+    icon: Music,
+    name: "Music",
+    category: "Arts",
+    mentors: 0,
+    description: "Performance, composition, and music theory",
+  },
+  {
+    id: "chemistry",
+    icon: FlaskConical,
+    name: "Chemistry",
+    category: "Sciences",
+    mentors: 0,
+    description: "Chemical research, pharmaceuticals, and materials",
+  },
+  {
+    id: "architecture",
+    icon: Building2,
+    name: "Architecture",
+    category: "Engineering",
+    mentors: 0,
+    description: "Building design, urban planning, and sustainability",
+  },
+  {
+    id: "environmental-science",
+    icon: Leaf,
+    name: "Environmental Science",
+    category: "Sciences",
+    mentors: 0,
+    description: "Climate, conservation, and environmental policy",
+  },
+  {
+    id: "international-relations",
+    icon: Globe,
+    name: "International Relations",
+    category: "Social Sciences",
+    mentors: 0,
+    description: "Diplomacy, global politics, and foreign affairs",
+  },
+  {
+    id: "film-media",
+    icon: Camera,
+    name: "Film & Media",
+    category: "Arts",
+    mentors: 0,
+    description: "Filmmaking, broadcasting, and digital media",
+  },
+  {
+    id: "data-science",
+    icon: Cpu,
+    name: "Data Science",
+    category: "Technology",
+    mentors: 0,
+    description: "Analytics, machine learning, and big data",
+  },
+  {
+    id: "psychology",
+    icon: Heart,
+    name: "Psychology",
+    category: "Health Sciences",
+    mentors: 0,
+    description: "Mental health, behavior, and cognitive science",
+  },
 ];
 
-const categories = ["All", "Technology", "Business", "Health Sciences", "Social Sciences", "Arts", "Engineering", "Sciences", "Education"];
+const categories = [
+  "All",
+  "Technology",
+  "Business",
+  "Health Sciences",
+  "Social Sciences",
+  "Arts",
+  "Engineering",
+  "Sciences",
+  "Education",
+];
 
 const Majors = () => {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredMajors = allMajors.filter((major) => {
-    const matchesSearch = major.name.toLowerCase().includes(search.toLowerCase()) ||
+    const matchesSearch =
+      major.name.toLowerCase().includes(search.toLowerCase()) ||
       major.description.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = activeCategory === "All" || major.category === activeCategory;
+    const matchesCategory =
+      activeCategory === "All" || major.category === activeCategory;
     return matchesSearch && matchesCategory;
   });
 
@@ -104,7 +238,10 @@ const Majors = () => {
                     {major.description}
                   </p>
                   <p className="text-sm font-medium text-primary mt-3">
-                    {major.mentors} mentors available
+                    <p className="text-sm font-medium text-primary mt-3">
+                      {major.mentors} {major.mentors < 2 ? "mentor" : "mentors"}{" "}
+                      available
+                    </p>{" "}
                   </p>
                 </div>
               </div>
@@ -114,7 +251,9 @@ const Majors = () => {
 
         {filteredMajors.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-lg text-muted-foreground">No majors found matching your search.</p>
+            <p className="text-lg text-muted-foreground">
+              No majors found matching your search.
+            </p>
             <Button
               variant="link"
               onClick={() => {

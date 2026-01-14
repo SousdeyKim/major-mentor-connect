@@ -6,12 +6,25 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Calendar } from "@/components/ui/calendar";
-import { ArrowLeft, ArrowRight, Clock, CreditCard, Check, Shield } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Clock,
+  CreditCard,
+  Check,
+  Shield,
+} from "lucide-react";
 
 type BookingStep = "date" | "time" | "payment" | "confirmation";
 
 const timeSlots = [
-  "09:00 AM", "10:30 AM", "12:00 PM", "02:00 PM", "03:30 PM", "05:00 PM", "07:00 PM"
+  "09:00 AM",
+  "10:30 AM",
+  "12:00 PM",
+  "02:00 PM",
+  "03:30 PM",
+  "05:00 PM",
+  "07:00 PM",
 ];
 
 const Booking = () => {
@@ -22,14 +35,49 @@ const Booking = () => {
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [isProcessing, setIsProcessing] = useState(false);
 
-  // Mock mentor data
-  const mentor = {
-    id: mentorId,
-    name: "Dara Sok",
-    major: "Computer Science",
-    university: "Royal University of Phnom Penh",
-  };
+  // Mentors array
+  const mentors = [
+    {
+      id: "mentor-1",
+      name: "Dara Sok",
+      major: "Computer Science",
+      university: "Royal University of Phnom Penh",
+    },
+    {
+      id: "mentor-2",
+      name: "Sokha Chan",
+      major: "Computer Science",
+      university: "Institute of Technology of Cambodia",
+    },
+    {
+      id: "mentor-3",
+      name: "Visal Meng",
+      major: "Computer Science",
+      university: "Norton University",
+    },
+  ];
 
+  // Select the mentor based on mentorId
+  const mentor = mentors.find((m) => m.id === mentorId);
+
+  if (!mentor) {
+    // Handle invalid mentorId
+    return (
+      <Layout>
+        <div className="container py-10 text-center">
+          <p className="text-lg font-medium">Mentor not found.</p>
+          <Link
+            to="/majors"
+            className="text-blue-500 underline mt-4 inline-block"
+          >
+            Back to Majors
+          </Link>
+        </div>
+      </Layout>
+    );
+  }
+
+  // Compute initials for avatar
   const initials = mentor.name
     .split(" ")
     .map((n) => n[0])
@@ -39,7 +87,6 @@ const Booking = () => {
 
   const handlePayment = () => {
     setIsProcessing(true);
-    // Simulate payment processing
     setTimeout(() => {
       setIsProcessing(false);
       setStep("confirmation");
@@ -63,7 +110,10 @@ const Booking = () => {
   return (
     <Layout>
       <div className="container py-10">
-        <Link to={`/majors/computer-science/mentors/${mentorId}`} className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6">
+        <Link
+          to={`/majors/computer-science/mentors/${mentorId}`}
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6"
+        >
           <ArrowLeft className="h-4 w-4" />
           Back to Profile
         </Link>
@@ -81,7 +131,9 @@ const Booking = () => {
             </div>
             <div>
               <p className="font-semibold">{mentor.name}</p>
-              <p className="text-sm text-muted-foreground">{mentor.major} • {mentor.university}</p>
+              <p className="text-sm text-muted-foreground">
+                {mentor.major} • {mentor.university}
+              </p>
             </div>
           </div>
 
@@ -99,8 +151,8 @@ const Booking = () => {
                 />
               </div>
               <div className="flex justify-end mt-6">
-                <Button 
-                  onClick={() => setStep("time")} 
+                <Button
+                  onClick={() => setStep("time")}
                   disabled={!selectedDate}
                 >
                   Continue
@@ -115,9 +167,13 @@ const Booking = () => {
             <div className="p-6 rounded-2xl border border-border bg-card">
               <h2 className="text-xl font-semibold mb-2">Select a Time</h2>
               <p className="text-muted-foreground mb-6">
-                {selectedDate?.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}
+                {selectedDate?.toLocaleDateString("en-US", {
+                  weekday: "long",
+                  month: "long",
+                  day: "numeric",
+                })}
               </p>
-              
+
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {timeSlots.map((time) => (
                   <button
@@ -140,7 +196,10 @@ const Booking = () => {
                   <ArrowLeft className="h-4 w-4" />
                   Back
                 </Button>
-                <Button onClick={() => setStep("payment")} disabled={!selectedTime}>
+                <Button
+                  onClick={() => setStep("payment")}
+                  disabled={!selectedTime}
+                >
                   Continue to Payment
                   <ArrowRight className="h-4 w-4" />
                 </Button>
@@ -156,7 +215,9 @@ const Booking = () => {
               {/* Order Summary */}
               <div className="p-4 rounded-xl bg-muted mb-6">
                 <div className="flex justify-between mb-2">
-                  <span className="text-muted-foreground">Mentorship Session (90 min)</span>
+                  <span className="text-muted-foreground">
+                    Mentorship Session (90 min)
+                  </span>
                   <span>$5.99</span>
                 </div>
                 <div className="flex justify-between mb-2">
@@ -177,11 +238,19 @@ const Booking = () => {
               <div className="space-y-4">
                 <div>
                   <Label htmlFor="cardName">Name on Card</Label>
-                  <Input id="cardName" placeholder="John Doe" className="mt-1" />
+                  <Input
+                    id="cardName"
+                    placeholder="John Doe"
+                    className="mt-1"
+                  />
                 </div>
                 <div>
                   <Label htmlFor="cardNumber">Card Number</Label>
-                  <Input id="cardNumber" placeholder="1234 5678 9012 3456" className="mt-1" />
+                  <Input
+                    id="cardNumber"
+                    placeholder="1234 5678 9012 3456"
+                    className="mt-1"
+                  />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
@@ -234,7 +303,13 @@ const Booking = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm text-muted-foreground">Date</p>
-                    <p className="font-medium">{selectedDate?.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}</p>
+                    <p className="font-medium">
+                      {selectedDate?.toLocaleDateString("en-US", {
+                        weekday: "long",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Time</p>
@@ -259,8 +334,8 @@ const Booking = () => {
                 <Link to="/dashboard">
                   <Button>Go to Dashboard</Button>
                 </Link>
-                <Link to="/majors">
-                  <Button variant="outline">Explore More Majors</Button>
+                <Link to="">
+                  <Button variant="outline">Chat with Mentor</Button>
                 </Link>
               </div>
             </div>
